@@ -904,7 +904,8 @@ runBlankCanvas act = do
             { Canvas.events =
                   ["mousedown", "mouseup", "mousemove", "keydown", "keyup"]
             }
-            True
+            { Canvas.debug = True }
+            { Canvas.middleware = [] }
     putStrLn $ printf "Open me on http://127.0.0.1:%d/" (Canvas.port options)
     Canvas.blankCanvas options $ \context -> do
         putStrLn "Program is starting..."
