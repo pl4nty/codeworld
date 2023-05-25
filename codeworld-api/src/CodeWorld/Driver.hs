@@ -64,6 +64,7 @@ import GHC.Fingerprint.Type
 import GHC.Generics
 import GHC.Stack
 import GHC.StaticPtr
+import Network.Wai.Middleware.RequestLogger (logStdout)
 import Numeric (showFFloatAlt)
 import qualified Reflex as R
 import qualified Reflex.Host.Class as R
@@ -905,7 +906,7 @@ runBlankCanvas act = do
                   ["mousedown", "mouseup", "mousemove", "keydown", "keyup"]
             }
             { Canvas.debug = False }
-            { Canvas.middleware = [] }
+            { Canvas.middleware = [logStdout] }
     putStrLn $ printf "Open me on http://127.0.0.1:%d/" (Canvas.port options)
     Canvas.blankCanvas options $ \context -> do
         putStrLn "Program is starting..."
